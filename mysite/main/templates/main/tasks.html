@@ -3,9 +3,18 @@
 {% block title %}Tasks{% endblock %}
 
 {% block content %}
+<form method="POST" action="" class="task-form">
+    {% csrf_token %}
+    {{ form }}
+    <input type="hidden" name="todolist_id" value="{{ list_id }}">
+
+    <input type="submit" value="Add">
+
+</form>
 <div class="task-links">
     {% for task in tasks %}
     <a href="/task/{{ task.id }}">{{ task.title }}</a><br>
     {% endfor %}
+
 </div>
 {% endblock %}

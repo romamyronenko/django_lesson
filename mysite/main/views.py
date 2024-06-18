@@ -1,7 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from main.models import Task
+from main.forms import CreateNewTask, CreateNewToDoList
+from main.models import Task, ToDoList
 
 
 # Create your views here.
@@ -9,9 +10,31 @@ def index(request):
     return render(request, "main/base.html", {})
 
 
-def tasks(request):
-    tasks = Task.objects.all()
-    return render(request, "main/tasks.html", {"tasks": tasks})
+def todolists(request):
+    todolists = ToDoList.objects.all()
+    return render(request, "main/todolists.html", {"todolists": todolists})
+
+
+def todolist(request, id):
+    form = CreateNewTask()
+    tasks = Task.objects.filter(todolist=id)
+
+    if request.method == "POST":
+
+        data = {}
+        for key in ["title", "description", "is_done", "todolist_id"]:
+            data[key] = request.POST.get(key)
+
+        data["is_done"] = bool(data["is_done"] == "on")
+        task = Task(**data)
+        print(request.POST["title"])
+        task.save()
+        return render(
+            request, "main/tasks.html", {"tasks": tasks, "form": form, "list_id": id}
+        )
+    return render(
+        request, "main/tasks.html", {"tasks": tasks, "form": form, "list_id": id}
+    )
 
 
 def task(request, id):
@@ -24,11 +47,10 @@ def create(request):
     data = {}
     if request.method == "POST":
         data = dict(request.POST)
-        task = Task.objects.create(
-            title=data.get('title', [None])[0],
-            description=data.get('description', [None])[0],
-            is_done=data.get('is_done', [None])[0] == 'on',
+        todolist = ToDoList.objects.create(
+            name=data.get("name", [None])[0],
         )
-        task.save()
-        return HttpResponseRedirect(f"/task/{task.id}")
-    return render(request, "main/create.html", {'data': data})
+        todolist.save()
+        return HttpResponseRedirect(f"/todolist/{todolist.id}")
+    form = CreateNewToDoList()
+    return render(request, "main/create_list.html", {"data": data, "form": form})

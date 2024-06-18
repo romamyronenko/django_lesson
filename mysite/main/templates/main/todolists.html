@@ -1,0 +1,11 @@
+{% extends "main/base.html "%}
+
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+<div class="task-links">
+    {% for todolist in todolists %}
+    <a href="/todolist/{{ todolist.id }}">{{ todolist.name }}</a><br>
+    {% endfor %}
+</div>
+{% endblock %}

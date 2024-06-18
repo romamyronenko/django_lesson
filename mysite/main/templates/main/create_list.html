@@ -1,0 +1,25 @@
+{% extends "main/base.html "%}
+
+{% block title %}
+Create task
+{% endblock %}
+
+{% block content %}
+<form class="task-form" method="POST">
+    {% csrf_token %}
+<!--    <label for="title">Title</label>-->
+<!--    <input id="title" name="title" type="text">-->
+
+<!--    <label for="description">Description</label>-->
+<!--    <textarea id="description" name="description"></textarea>-->
+
+<!--    <label for="is_done">-->
+<!--        <input id="is_done" type="checkbox" name="is_done">-->
+<!--        Is Done-->
+<!--    </label>-->
+    {{ form }}
+
+    <input type="submit" value="Create">
+</form>
+
+{% endblock %}
