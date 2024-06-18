@@ -1,0 +1,11 @@
+{% extends "main/base.html "%}
+
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+<div class="task-links">
+    {% for task in tasks %}
+    <a href="/task/{{ task.id }}">{{ task.title }}</a><br>
+    {% endfor %}
+</div>
+{% endblock %}
