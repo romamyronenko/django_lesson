@@ -73,6 +73,50 @@
 .task-links a:last-child {
     border-bottom: none;
 }
+.task-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 400px;
+}
+
+.task-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.task-form input[type="text"], .task-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.task-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.task-form input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.task-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.task-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
     </style>
 </head>
 <body>
@@ -81,7 +125,7 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/tasks">Lists</a></li>
-            <li><a href="#create">Create</a></li>
+            <li><a href="/create">Create</a></li>
         </ul>
     </div>
     <div class="content">
