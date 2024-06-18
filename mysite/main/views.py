@@ -16,7 +16,7 @@ def todolists(request):
 
 
 def todolist(request, id):
-    form = CreateNewTask()
+    form = CreateNewTask(request.POST or None)
     tasks = Task.objects.filter(todolist=id)
 
     if request.method == "POST":
