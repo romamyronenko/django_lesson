@@ -1,20 +1,21 @@
 from django import forms
 
-from main.models import Task
+from main.models import Task, ToDoList
 
 
-class CreateNewTask(forms.Form):
-    # title = forms.CharField(label="Title", max_length=100)
-    # description = forms.CharField(label="Description", max_length=300)
-    # is_done = forms.BooleanField(required=False)
-
+class CreateNewTask(forms.ModelForm):
     class Meta:
         # specify model to be used
         model = Task
 
         # specify fields to be used
-        fields = ["title", "description", "is_done", "todolist_id"]
+        fields = ["title", "description", "is_done"]
 
 
-class CreateNewToDoList(forms.Form):
-    name = forms.CharField(label="name", max_length=100)
+class CreateNewToDoList(forms.ModelForm):
+    class Meta:
+        # specify model to be used
+        model = ToDoList
+
+        # specify fields to be used
+        fields = ["name"]
