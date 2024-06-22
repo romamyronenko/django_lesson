@@ -10,11 +10,15 @@
 </head>
 <body>
     <div class="sidebar">
+        <h1>{{ user }}</h1>
         <h2>Menu</h2>
         <ul>
             <li><a href="{% url 'main:home' %}">Home</a></li>
             <li><a href="{% url 'main:todolists' %}">Lists</a></li>
             <li><a href="{% url 'main:create' %}">Create</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><form method="POST" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Logout</button> </form></li>
         </ul>
     </div>
     <div class="content">
