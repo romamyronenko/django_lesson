@@ -12,9 +12,9 @@
     <div class="sidebar">
         <h2>Menu</h2>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/todolists">Lists</a></li>
-            <li><a href="/create">Create</a></li>
+            <li><a href="{% url 'main:home' %}">Home</a></li>
+            <li><a href="{% url 'main:todolists' %}">Lists</a></li>
+            <li><a href="{% url 'main:create' %}">Create</a></li>
         </ul>
     </div>
     <div class="content">

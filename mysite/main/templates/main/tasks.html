@@ -13,7 +13,7 @@
 </form>
 <div class="task-links">
     {% for task in tasks %}
-    <a href="/task/{{ task.id }}">{{ task.title }}</a><br>
+    <a href="{% url 'main:task' task.id %}">{{ task.title }}</a><br>
     {% endfor %}
 
 </div>
