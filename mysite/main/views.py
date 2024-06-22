@@ -38,7 +38,9 @@ def task(request, id):
 def create(request):
     form = CreateNewToDoList(request.POST or None)
     if form.is_valid():
-        t = form.save()
+        t = form.save(commit=False)
+        t.user = request.user
+        t.save()
 
         return redirect(f"main:todolist", t.id)
     return render(request, "main/create_list.html", {"form": form})

@@ -4,8 +4,8 @@
 
 {% block content %}
 <div class="task-links">
-    {% for todolist in todolists %}
-    <a href="{% url 'main:todolist' todolist.id %}">{{ todolist.name }}</a><br>
+    {% for todolist in user.todolist.all %}
+        <a href="{% url 'main:todolist' todolist.id %}">{{ todolist.name }}</a><br>
     {% endfor %}
 </div>
 {% endblock %}
